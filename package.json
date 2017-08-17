@@ -2,7 +2,7 @@
   "name": "dark-aigle",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/aigle.js",
   "scripts": {
     "test": "mocha test --recursive"
   },
@@ -12,5 +12,8 @@
     "async"
   ],
   "author": "Suguru Motegi",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^3.5.0"
+  }
 }
