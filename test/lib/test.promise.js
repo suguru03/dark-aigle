@@ -4,7 +4,9 @@ require('../..');
 
 const assert = require('assert');
 
-describe('#finally', () => {
+const parallel = require('mocha.parallel');
+
+parallel('#finally', () => {
 
   it('should work', async () => {
 

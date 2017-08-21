@@ -4,9 +4,11 @@ require('../..');
 
 const assert = require('assert');
 
+const parallel = require('mocha.parallel');
+
 const { DELAY } = require('../config');
 
-describe('map', () => {
+parallel('map', () => {
 
   it('should work in parallel', async () => {
 
@@ -53,7 +55,7 @@ describe('map', () => {
   });
 });
 
-describe('#map', () => {
+parallel('#map', () => {
 
   it('should execute in parallel', async () => {
 
