@@ -8,7 +8,7 @@ const parallel = require('mocha.parallel');
 
 const { DELAY } = require('../config');
 
-parallel('findSeries', async () => {
+parallel('findSeries', () => {
 
   it('should execute in series', async () => {
 
@@ -140,7 +140,7 @@ parallel('findSeries', async () => {
   });
 });
 
-parallel('#findSeries', async () => {
+parallel('#findSeries', () => {
 
   it('should execute in series', async () => {
 
