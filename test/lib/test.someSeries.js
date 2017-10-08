@@ -8,7 +8,7 @@ const parallel = require('mocha.parallel');
 
 const { DELAY } = require('../config');
 
-parallel('someSeries', async () => {
+parallel('someSeries', () => {
 
   it('should execute in series', async () => {
 
@@ -56,7 +56,7 @@ parallel('someSeries', async () => {
     ]);
   });
 
-  it('should execute in parallel', async () => {
+  it('should execute in series', async () => {
 
     const order = [];
     const collection = [0, 4, 2];
@@ -75,7 +75,7 @@ parallel('someSeries', async () => {
     ]);
   });
 
-  it('should execute with object collection in parallel', async () => {
+  it('should execute with object collection in series', async () => {
 
     const order = [];
     const collection = {
@@ -139,7 +139,7 @@ parallel('someSeries', async () => {
   });
 });
 
-parallel('#someSeries', async () => {
+parallel('#someSeries', () => {
 
   it('should execute in series', async () => {
 

@@ -8,7 +8,7 @@ const parallel = require('mocha.parallel');
 
 const { DELAY } = require('../config');
 
-parallel('some', async () => {
+parallel('some', () => {
 
   it('should execute in parallel', async () => {
 
@@ -132,7 +132,7 @@ parallel('some', async () => {
   });
 });
 
-parallel('#some', async () => {
+parallel('#some', () => {
 
   it('should execute in parallel', async () => {
 
