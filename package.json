@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "",
   "private": true,
-  "main": "lib/aigle.js",
+  "main": "lib/aiglify.js",
   "scripts": {
     "test": "mocha test --recursive"
   },

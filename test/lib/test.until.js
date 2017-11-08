@@ -1,6 +1,6 @@
 'use strict';
 
-require('../..');
+require('..');
 
 const assert = require('assert');
 

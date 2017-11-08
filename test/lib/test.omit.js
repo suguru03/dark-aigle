@@ -1,6 +1,6 @@
 'use strict';
 
-require('../..');
+require('..');
 
 const assert = require('assert');
 
@@ -21,16 +21,16 @@ parallel('omit', () => {
       }, DELAY * value));
     };
     const res = await Promise.omit(collection, iterator);
-        assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-        assert.deepEqual(res, {
-          '1': 4,
-          '2': 2
-        });
-        assert.deepEqual(order, [
-          [0, 1],
-          [2, 2],
-          [1, 4]
-        ]);
+    assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
+    assert.deepEqual(res, {
+      '1': 4,
+      '2': 2
+    });
+    assert.deepEqual(order, [
+      [0, 1],
+      [2, 2],
+      [1, 4]
+    ]);
   });
 
   it('should execute with object collection in parallel', async () => {
@@ -48,16 +48,16 @@ parallel('omit', () => {
       }, DELAY * value));
     };
     const res = await Promise.omit(collection, iterator);
-        assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-        assert.deepEqual(res, {
-          'task2': 4,
-          'task3': 2
-        });
-        assert.deepEqual(order, [
-          ['task1', 1],
-          ['task3', 2],
-          ['task2', 4]
-        ]);
+    assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
+    assert.deepEqual(res, {
+      'task2': 4,
+      'task3': 2
+    });
+    assert.deepEqual(order, [
+      ['task1', 1],
+      ['task3', 2],
+      ['task2', 4]
+    ]);
   });
 
   it('should return an empty array if collection is an empty array', async () => {
@@ -66,8 +66,8 @@ parallel('omit', () => {
       value.test();
     };
     const res = await Promise.omit([], iterator);
-        assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-        assert.deepEqual(res, {});
+    assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
+    assert.deepEqual(res, {});
   });
 
   it('should return an empty array if collection is an empty object', async () => {
@@ -76,8 +76,8 @@ parallel('omit', () => {
       value.test();
     };
     const res = await Promise.omit({}, iterator);
-        assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-        assert.deepEqual(res, {});
+    assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
+    assert.deepEqual(res, {});
   });
 
   it('should return an empty array if collection is string', async () => {
@@ -86,8 +86,8 @@ parallel('omit', () => {
       value.test();
     };
     const res = await Promise.omit('test', iterator);
-        assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-        assert.deepEqual(res, {});
+    assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
+    assert.deepEqual(res, {});
   });
 
   it('should throw TypeError', async () => {
@@ -100,7 +100,7 @@ parallel('omit', () => {
       await Promise.omit(collection, iterator);
       assert.fail();
     } catch (e) {
-        assert.ok(e instanceof TypeError);
+      assert.ok(e instanceof TypeError);
     }
   });
 });
@@ -118,16 +118,16 @@ parallel('#omit', () => {
       }, DELAY * value));
     };
     const res = await Promise.resolve(collection).omit(iterator);
-        assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-        assert.deepEqual(res, {
-          '1': 4,
-          '2': 2
-        });
-        assert.deepEqual(order, [
-          [0, 1],
-          [2, 2],
-          [1, 4]
-        ]);
+    assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
+    assert.deepEqual(res, {
+      '1': 4,
+      '2': 2
+    });
+    assert.deepEqual(order, [
+      [0, 1],
+      [2, 2],
+      [1, 4]
+    ]);
   });
 
   it('should execute with object collection in parallel', async () => {
@@ -144,16 +144,16 @@ parallel('#omit', () => {
       }, DELAY * value));
     };
     const res = await Promise.resolve(collection).omit(iterator);
-        assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-        assert.deepEqual(res, {
-          'task2': 4,
-          'task3': 2
-        });
-        assert.deepEqual(order, [
-          ['task1', 1],
-          ['task3', 2],
-          ['task2', 4]
-        ]);
+    assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
+    assert.deepEqual(res, {
+      'task2': 4,
+      'task3': 2
+    });
+    assert.deepEqual(order, [
+      ['task1', 1],
+      ['task3', 2],
+      ['task2', 4]
+    ]);
   });
 
   it('should execute with delay', async () => {
@@ -167,16 +167,16 @@ parallel('#omit', () => {
       }, DELAY * value));
     };
     const res = await Promise.delay(DELAY, collection).omit(iterator);
-        assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-        assert.deepEqual(res, {
-          '1': 4,
-          '2': 2
-        });
-        assert.deepEqual(order, [
-          [0, 1],
-          [2, 2],
-          [1, 4]
-        ]);
+    assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
+    assert.deepEqual(res, {
+      '1': 4,
+      '2': 2
+    });
+    assert.deepEqual(order, [
+      [0, 1],
+      [2, 2],
+      [1, 4]
+    ]);
   });
 
   it('should throw TypeError', async () => {
