@@ -22,7 +22,7 @@ parallel('findKeySeries', async () => {
     };
     const res = await Promise.findKeySeries(collection, iterator);
     assert.strictEqual(res, '0');
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1]
     ]);
   });
@@ -51,7 +51,7 @@ parallel('findKeySeries', async () => {
     };
     const res = await Promise.findKeySeries(collection, iterator);
     assert.strictEqual(res, 'task1');
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1]
     ]);
   });
@@ -68,7 +68,7 @@ parallel('findKeySeries', async () => {
     };
     const res = await Promise.findKeySeries(collection, iterator);
     assert.strictEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 0],
       [1, 4],
       [2, 2]
@@ -91,7 +91,7 @@ parallel('findKeySeries', async () => {
     };
     const res = await Promise.findKeySeries(collection, iterator);
     assert.strictEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 0],
       ['task2', 4],
       ['task3', 2]
@@ -154,7 +154,7 @@ parallel('#findKeySeries', async () => {
     };
     const res = await Promise.resolve(collection).findKeySeries(iterator);
     assert.strictEqual(res, '0');
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1]
     ]);
   });
@@ -174,7 +174,7 @@ parallel('#findKeySeries', async () => {
     };
     const res = await Promise.resolve(collection).findKeySeries(iterator);
     assert.strictEqual(res, 'task1');
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1]
     ]);
   });
@@ -191,7 +191,7 @@ parallel('#findKeySeries', async () => {
     };
     const res = await Promise.delay(DELAY, collection).findKeySeries(iterator);
     assert.strictEqual(res, '0');
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1]
     ]);
   });

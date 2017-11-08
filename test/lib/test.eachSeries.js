@@ -22,8 +22,8 @@ parallel('eachSeries', () => {
       }, DELAY * value));
     };
     const res = await Promise.eachSeries(collection, iterator);
-    assert.deepEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, undefined);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [1, 4],
       [2, 2]
@@ -45,8 +45,8 @@ parallel('eachSeries', () => {
       }, DELAY * value));
     };
     const res = await Promise.eachSeries(collection, iterator);
-    assert.deepEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, undefined);
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task2', 4],
       ['task3', 2]
@@ -65,7 +65,7 @@ parallel('eachSeries', () => {
     };
     const res = await Promise.eachSeries(collection, iterator);
     assert.strictEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [1, 4]
     ]);
@@ -87,7 +87,7 @@ parallel('eachSeries', () => {
     };
     const res = await Promise.eachSeries(collection, iterator);
     assert.strictEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task2', 4]
     ]);
@@ -146,8 +146,8 @@ parallel('forEachSeries', () => {
       }, DELAY * value));
     };
     const res = await Promise.forEachSeries(collection, iterator);
-    assert.deepEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, undefined);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [1, 4],
       [2, 2]
@@ -169,8 +169,8 @@ parallel('#eachSeries', () => {
       }, DELAY * value));
     };
     const res = await Promise.resolve(collection).eachSeries(iterator);
-    assert.deepEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, undefined);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [1, 4],
       [2, 2]
@@ -192,8 +192,8 @@ parallel('#eachSeries', () => {
       }, DELAY * value));
     };
     const res = await Promise.resolve(collection).eachSeries(iterator);
-    assert.deepEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, undefined);
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task2', 4],
       ['task3', 2]
@@ -244,8 +244,8 @@ parallel('#forEachSeries', () => {
       }, DELAY * value));
     };
     const res = await Promise.resolve(collection).forEachSeries(iterator);
-    assert.deepEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, undefined);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [1, 4],
       [2, 2]

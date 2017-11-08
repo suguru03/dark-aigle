@@ -23,7 +23,7 @@ parallel('findKeyLimit', () => {
     };
     const res = await Promise.findKeyLimit(collection, 2, iterator);
     assert.strictEqual(res, '0');
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1]
     ]);
   });
@@ -45,7 +45,7 @@ parallel('findKeyLimit', () => {
     };
     const res = await Promise.findKeyLimit(collection, 2, iterator);
     assert.strictEqual(res, 'task1');
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1]
     ]);
   });
@@ -62,7 +62,7 @@ parallel('findKeyLimit', () => {
     };
     const res = await Promise.findKeyLimit(collection, 2, iterator);
     assert.strictEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 0],
       [2, 2],
       [1, 4]
@@ -84,7 +84,7 @@ parallel('findKeyLimit', () => {
     };
     const res = await Promise.findKeyLimit(collection, 2, iterator);
     assert.strictEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 0],
       ['task3', 2],
       ['task2', 4]
@@ -101,7 +101,7 @@ parallel('findKeyLimit', () => {
     };
     Promise.findKeyLimit(collection, iterator);
     await Promise.delay(DELAY);
-    assert.deepEqual(order, _.times(8));
+    assert.deepStrictEqual(order, _.times(8));
   });
 
   it('should return an empty array if collection is an empty array', async () => {
@@ -149,7 +149,7 @@ parallel('findKeyLimit', () => {
       assert.strictEqual(e, error);
     }
     await Promise.delay(DELAY * 5);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 3],
       [1, 5]
@@ -180,7 +180,7 @@ parallel('findKeyLimit', () => {
       assert.strictEqual(e, error);
     }
     await Promise.delay(DELAY * 5);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 3],
       ['task2', 5]
@@ -202,7 +202,7 @@ parallel('#findKeyLimit', () => {
     };
     const res = await Promise.resolve(collection).findKeyLimit(2, iterator);
     assert.strictEqual(res, '0');
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1]
     ]);
   });
@@ -224,7 +224,7 @@ parallel('#findKeyLimit', () => {
     };
     const res = await Promise.resolve(collection).findKeyLimit(2, iterator);
     assert.strictEqual(res, 'task1');
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1]
     ]);
   });
@@ -241,7 +241,7 @@ parallel('#findKeyLimit', () => {
     };
     const res = await Promise.delay(DELAY, collection).findKeyLimit(2, iterator);
     assert.strictEqual(res, '0');
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1]
     ]);
   });
@@ -257,6 +257,6 @@ parallel('#findKeyLimit', () => {
     Promise.resolve(collection).findKeyLimit(iterator);
     await Promise.delay(DELAY * 5);
 
-    assert.deepEqual(order, _.times(8));
+    assert.deepStrictEqual(order, _.times(8));
   });
 });

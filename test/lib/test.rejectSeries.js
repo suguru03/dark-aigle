@@ -22,8 +22,8 @@ parallel('rejectSeries', () => {
     };
     const res = await Promise.rejectSeries(collection, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
-    assert.deepEqual(res, [4, 2]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [4, 2]);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [1, 4],
       [2, 2]
@@ -36,7 +36,7 @@ parallel('rejectSeries', () => {
     const iterator = value => value % 2;
     const res = await Promise.rejectSeries(collection, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
-    assert.deepEqual(res, [4, 2]);
+    assert.deepStrictEqual(res, [4, 2]);
   });
 
   it('should execute with object collection in series', async () => {
@@ -55,8 +55,8 @@ parallel('rejectSeries', () => {
     };
     const res = await Promise.rejectSeries(collection, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
-    assert.deepEqual(res, [4, 2]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [4, 2]);
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task2', 4],
       ['task3', 2]
@@ -121,8 +121,8 @@ parallel('#rejectSeries', () => {
       }, DELAY * value));
     };
     const res = await Promise.resolve(collection).rejectSeries(iterator);
-    assert.deepEqual(res, [4, 2]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [4, 2]);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [1, 4],
       [2, 2]
@@ -143,8 +143,8 @@ parallel('#rejectSeries', () => {
       }, DELAY * value));
     };
     const res = await Promise.resolve(collection).rejectSeries(iterator);
-    assert.deepEqual(res, [4, 2]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [4, 2]);
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task2', 4],
       ['task3', 2]
@@ -162,8 +162,8 @@ parallel('#rejectSeries', () => {
       }, DELAY * value));
     };
     const res = await Promise.delay(DELAY, collection).rejectSeries(iterator);
-    assert.deepEqual(res, [4, 2]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [4, 2]);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [1, 4],
       [2, 2]

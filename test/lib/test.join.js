@@ -23,7 +23,7 @@ parallel('join', () => {
     const fn = (arg1, arg2, arg3) =>  arg1 + arg2 + arg3;
     const res = await Promise.join(tasks[0], tasks[1], tasks[2], fn);
     assert.strictEqual(res, 6);
-    assert.deepEqual(order, [3, 2, 1]);
+    assert.deepStrictEqual(order, [3, 2, 1]);
   });
 
   it('should work by non promise tasks', async () => {
@@ -38,14 +38,14 @@ parallel('join', () => {
 
     const tasks = [2, 3, 1];
     const res = await Promise.join(tasks[0], tasks[1], tasks[2]);
-    assert.deepEqual(res, [2, 3, 1]);
+    assert.deepStrictEqual(res, [2, 3, 1]);
   });
 
   it('should throw typeEror', async () => {
 
     const tasks = [2, 3, 1];
     const res = await Promise.join(tasks[0], tasks[1], tasks[2]);
-    assert.deepEqual(res, [2, 3, 1]);
+    assert.deepStrictEqual(res, [2, 3, 1]);
   });
 
   it('should throw TypeError', async () => {

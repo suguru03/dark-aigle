@@ -22,12 +22,12 @@ parallel('mapValues', () => {
     };
     const res = await Promise.mapValues(collection, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {
+    assert.deepStrictEqual(res, {
       '0': 2,
       '1': 8,
       '2': 4
     });
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2],
       [1, 4]
@@ -50,12 +50,12 @@ parallel('mapValues', () => {
     };
     const res = await Promise.mapValues(collection, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {
+    assert.deepStrictEqual(res, {
       task1: 2,
       task2: 8,
       task3: 4
     });
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 2],
       ['task2', 4]
@@ -69,7 +69,7 @@ parallel('mapValues', () => {
     };
     const res = await Promise.mapValues([], iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {});
+    assert.deepStrictEqual(res, {});
   });
 
   it('should return an empty ojbect if collection is an empty object', async () => {
@@ -79,7 +79,7 @@ parallel('mapValues', () => {
     };
     const res = await Promise.mapValues({}, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {});
+    assert.deepStrictEqual(res, {});
   });
 
   it('should return an empty object if collection is string', async () => {
@@ -89,7 +89,7 @@ parallel('mapValues', () => {
     };
     const res = await Promise.mapValues('test', iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {});
+    assert.deepStrictEqual(res, {});
   });
 
   it('should throw TypeError', async () => {
@@ -120,12 +120,12 @@ parallel('#mapValues', () => {
       }, DELAY * value));
     };
     const res = await Promise.resolve(collection).mapValues(iterator);
-    assert.deepEqual(res, {
+    assert.deepStrictEqual(res, {
       '0': 2,
       '1': 8,
       '2': 4
     });
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2],
       [1, 4]
@@ -146,12 +146,12 @@ parallel('#mapValues', () => {
       }, DELAY * value));
     };
     const res = await Promise.resolve(collection).mapValues(iterator);
-    assert.deepEqual(res, {
+    assert.deepStrictEqual(res, {
       task1: 2,
       task2: 8,
       task3: 4
     });
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 2],
       ['task2', 4]
@@ -169,12 +169,12 @@ parallel('#mapValues', () => {
       }, DELAY * value));
     };
     const res = await Promise.delay(DELAY, collection).mapValues(iterator);
-    assert.deepEqual(res, {
+    assert.deepStrictEqual(res, {
       '0': 2,
       '1': 8,
       '2': 4
     });
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2],
       [1, 4]

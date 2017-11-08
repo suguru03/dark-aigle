@@ -23,7 +23,7 @@ parallel('every', () => {
     };
     const res = await Promise.every(collection, iterator);
     assert.strictEqual(res, false);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2]
     ]);
@@ -46,7 +46,7 @@ parallel('every', () => {
     };
     const res = await Promise.every(collection, iterator);
     assert.strictEqual(res, false);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 2]
     ]);
@@ -64,7 +64,7 @@ parallel('every', () => {
     };
     const res = await Promise.every(collection, iterator);
     assert.strictEqual(res, true);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 3],
       [1, 5]
@@ -87,7 +87,7 @@ parallel('every', () => {
     };
     const res = await Promise.every(collection, iterator);
     assert.strictEqual(res, true);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 3],
       ['task2', 5]
@@ -150,7 +150,7 @@ parallel('#every', () => {
     };
     const res = await Promise.resolve(collection).every(iterator);
     assert.strictEqual(res, false);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2]
     ]);
@@ -171,7 +171,7 @@ parallel('#every', () => {
     };
     const res = await Promise.resolve(collection).every(iterator);
     assert.strictEqual(res, false);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 2]
     ]);
@@ -189,7 +189,7 @@ parallel('#every', () => {
     };
     const res = await Promise.delay(DELAY, collection).every(iterator);
     assert.strictEqual(res, false);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2]
     ]);

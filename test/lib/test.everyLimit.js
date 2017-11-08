@@ -24,7 +24,7 @@ parallel('everyLimit', () => {
     };
     const res = await Promise.everyLimit(collection, 2, iterator);
     assert.strictEqual(res, false);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 3],
       [1, 5],
@@ -50,7 +50,7 @@ parallel('everyLimit', () => {
     };
     const res = await Promise.everyLimit(collection, 2, iterator);
     assert.strictEqual(res, false);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 3],
       ['task2', 5],
@@ -70,7 +70,7 @@ parallel('everyLimit', () => {
     };
     const res = await Promise.everyLimit(collection, 2, iterator);
     assert.strictEqual(res, true);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 3],
       [1, 5]
@@ -92,7 +92,7 @@ parallel('everyLimit', () => {
     };
     const res = await Promise.everyLimit(collection, 2, iterator);
     assert.strictEqual(res, true);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 3],
       ['task2', 5]
@@ -109,7 +109,7 @@ parallel('everyLimit', () => {
     };
     Promise.everyLimit(collection, iterator);
     await Promise.delay(DELAY);
-    assert.deepEqual(order, _.times(8));
+    assert.deepStrictEqual(order, _.times(8));
   });
 
   it('should return an empty array if collection is an empty array', async () => {
@@ -157,7 +157,7 @@ parallel('everyLimit', () => {
       assert.strictEqual(e, error);
     }
     await Promise.delay(DELAY * 5);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 3],
       [1, 5]
@@ -188,7 +188,7 @@ parallel('everyLimit', () => {
       assert.strictEqual(e, error);
     }
     await Promise.delay(DELAY * 5);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 3],
       ['task2', 5]
@@ -210,7 +210,7 @@ parallel('#everyLimit', () => {
     };
     const res = await Promise.resolve(collection).everyLimit(2, iterator);
     assert.strictEqual(res, false);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 3],
       [1, 5],
@@ -235,7 +235,7 @@ parallel('#everyLimit', () => {
     };
     const res = await Promise.resolve(collection).everyLimit(2, iterator);
     assert.strictEqual(res, false);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 3],
       ['task2', 5],
@@ -253,6 +253,6 @@ parallel('#everyLimit', () => {
     };
     Promise.resolve(collection).everyLimit(iterator);
     await Promise.delay(DELAY * 5);
-    assert.deepEqual(order, _.times(8));
+    assert.deepStrictEqual(order, _.times(8));
   });
 });

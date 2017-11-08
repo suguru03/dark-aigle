@@ -25,8 +25,8 @@ parallel('timesLimit', () => {
     const res = await Promise.timesLimit(count, 2, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
     assert.strictEqual(res.length, count);
-    assert.deepEqual(res, [0, 2, 4, 6, 8]);
-    assert.deepEqual(order, [0, 2, 1, 4, 3]);
+    assert.deepStrictEqual(res, [0, 2, 4, 6, 8]);
+    assert.deepStrictEqual(order, [0, 2, 1, 4, 3]);
   });
 
   it('should execute with synchronous function', async () => {
@@ -36,7 +36,7 @@ parallel('timesLimit', () => {
     const res = await Promise.timesLimit(count, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
     assert.strictEqual(res.length, count);
-    assert.deepEqual(res, [0, 2, 4, 6, 8]);
+    assert.deepStrictEqual(res, [0, 2, 4, 6, 8]);
   });
 
   it('should execute with default concurrency which is 8', async () => {
@@ -48,7 +48,7 @@ parallel('timesLimit', () => {
     };
     Promise.timesLimit(10, iterator);
     await Promise.delay(DELAY);
-    assert.deepEqual(order, _.times(8));
+    assert.deepStrictEqual(order, _.times(8));
   });
 
   it('should stop execution if error is caused', async () => {
@@ -67,7 +67,7 @@ parallel('timesLimit', () => {
       assert.strictEqual(e, error);
     }
     await Promise.delay(DELAY * 5);
-    assert.deepEqual(order, _.times(5));
+    assert.deepStrictEqual(order, _.times(5));
   });
 
   it('should return an empty array if times is not number', async () => {
@@ -83,7 +83,7 @@ parallel('timesLimit', () => {
     const res = await Promise.timesLimit(5);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
     assert.strictEqual(res.length, 5);
-    assert.deepEqual(res, [0, 1, 2, 3, 4]);
+    assert.deepStrictEqual(res, [0, 1, 2, 3, 4]);
   });
 
   it('should catch a TypeError', async () => {
@@ -115,8 +115,8 @@ parallel('#timesLimit', () => {
     const res = await Promise.resolve(count).timesLimit(2, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
     assert.strictEqual(res.length, count);
-    assert.deepEqual(res, [0, 2, 4, 6, 8]);
-    assert.deepEqual(order, [0, 2, 1, 4, 3]);
+    assert.deepStrictEqual(res, [0, 2, 4, 6, 8]);
+    assert.deepStrictEqual(order, [0, 2, 1, 4, 3]);
   });
 
   it('should execute with delay', async () => {
@@ -126,6 +126,6 @@ parallel('#timesLimit', () => {
     const res = await Promise.delay(DELAY, count).timesLimit(iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
     assert.strictEqual(res.length, count);
-    assert.deepEqual(res, [0, 2, 4, 6, 8]);
+    assert.deepStrictEqual(res, [0, 2, 4, 6, 8]);
   });
 });

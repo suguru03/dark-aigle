@@ -23,7 +23,7 @@ parallel('each', () => {
     };
     const res = await Promise.each(collection, iterator);
     assert.strictEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2],
       [1, 4]
@@ -47,7 +47,7 @@ parallel('each', () => {
     };
     const res = await Promise.each(collection, iterator);
     assert.strictEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 2],
       ['task2', 4]
@@ -66,7 +66,7 @@ parallel('each', () => {
     };
     const res = await Promise.each(collection, iterator);
     assert.strictEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2]
     ]);
@@ -88,7 +88,7 @@ parallel('each', () => {
     };
     const res = await Promise.each(collection, iterator);
     assert.strictEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 2]
     ]);
@@ -180,7 +180,7 @@ parallel('forEach', () => {
     };
     const res = await Promise.forEach(collection, iterator);
     assert.strictEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2],
       [1, 4]
@@ -204,7 +204,7 @@ parallel('#each', () => {
     };
     const res = await Promise.resolve(collection).each(iterator);
     assert.strictEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2],
       [1, 4]
@@ -227,7 +227,7 @@ parallel('#each', () => {
     };
     const res = await Promise.resolve(collection).each(iterator);
     assert.strictEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 2],
       ['task2', 4]
@@ -248,7 +248,7 @@ parallel('#each', () => {
     };
     const res = await test().each(iterator);
     assert.strictEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2],
       [1, 4]
@@ -299,7 +299,7 @@ parallel('#forEach', () => {
     };
     const res = await Promise.resolve(collection).forEach(iterator);
     assert.strictEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2],
       [1, 4]

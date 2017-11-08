@@ -23,8 +23,8 @@ parallel('concatSeries', () => {
     };
     const res = await Promise.concatSeries(collection, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
-    assert.deepEqual(res, [1, 4, 2]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [1, 4, 2]);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [1, 4],
       [2, 2]
@@ -37,7 +37,7 @@ parallel('concatSeries', () => {
     const iterator = value => [value];
     const res = await Promise.concatSeries(collection, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
-    assert.deepEqual(res, [1, 4, 2]);
+    assert.deepStrictEqual(res, [1, 4, 2]);
   });
 
   it('should execute with object collection in series', async () => {
@@ -57,8 +57,8 @@ parallel('concatSeries', () => {
     };
     const res = await Promise.concatSeries(collection, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
-    assert.deepEqual(res, [1, 4, 2]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [1, 4, 2]);
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task2', 4],
       ['task3', 2]
@@ -70,7 +70,7 @@ parallel('concatSeries', () => {
     const collection = [null, undefined, 0, '', false];
     const iterator = value => value;
     const res = await Promise.concatSeries(collection, iterator);
-    assert.deepEqual(res, [null, 0, '', false]);
+    assert.deepStrictEqual(res, [null, 0, '', false]);
   });
 
   it('should return an empty array if collection is an empty array', async () => {
@@ -131,8 +131,8 @@ parallel('#concatSeries', () => {
       }, DELAY * value));
     };
     const res = await Promise.resolve(collection).concatSeries(iterator);
-    assert.deepEqual(res, [1, 4, 2]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [1, 4, 2]);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [1, 4],
       [2, 2]
@@ -153,8 +153,8 @@ parallel('#concatSeries', () => {
       }, DELAY * value));
     };
     const res = await Promise.resolve(collection).concatSeries(iterator);
-    assert.deepEqual(res, [1, 4, 2]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [1, 4, 2]);
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task2', 4],
       ['task3', 2]

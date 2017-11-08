@@ -22,7 +22,7 @@ parallel('findIndex', () => {
     };
     const res = await Promise.findIndex(collection, iterator);
     assert.strictEqual(res, 0);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1]
     ]);
   });
@@ -43,7 +43,7 @@ parallel('findIndex', () => {
     };
     const res = await Promise.findIndex(collection, iterator);
     assert.strictEqual(res, -1);
-    assert.deepEqual(order, []);
+    assert.deepStrictEqual(order, []);
   });
 
   it('should execute in parallel', async () => {
@@ -58,7 +58,7 @@ parallel('findIndex', () => {
     };
     const res = await Promise.findIndex(collection, iterator);
     assert.strictEqual(res, -1);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 0],
       [2, 2],
       [1, 4]
@@ -81,7 +81,7 @@ parallel('findIndex', () => {
     };
     const res = await Promise.findIndex(collection, iterator);
     assert.strictEqual(res, -1);
-    assert.deepEqual(order, []);
+    assert.deepStrictEqual(order, []);
   });
 
   it('should return undefined if collection is an empty array', async () => {
@@ -139,7 +139,7 @@ parallel('#findIndex', () => {
     };
     const res = await Promise.resolve(collection).findIndex(iterator);
     assert.strictEqual(res, 0);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1]
     ]);
   });
@@ -159,7 +159,7 @@ parallel('#findIndex', () => {
     };
     const res = await Promise.resolve(collection).findIndex(iterator);
     assert.strictEqual(res, -1);
-    assert.deepEqual(order, []);
+    assert.deepStrictEqual(order, []);
   });
 
   it('should execute with delay', async () => {
@@ -174,7 +174,7 @@ parallel('#findIndex', () => {
     };
     const res = await Promise.delay(DELAY, collection).findIndex(iterator);
     assert.strictEqual(res, 0);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1]
     ]);
   });

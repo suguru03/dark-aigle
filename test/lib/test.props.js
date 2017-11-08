@@ -21,12 +21,12 @@ parallel('props', () => {
       task3: delay('test3', DELAY * 1)
     };
     const res = await Promise.props(tasks);
-    assert.deepEqual(res, {
+    assert.deepStrictEqual(res, {
       task1: 'test1',
       task2: 'test2',
       task3: 'test3'
     });
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       'test3',
       'test2',
       'test1'
@@ -49,7 +49,7 @@ parallel('props', () => {
       assert.ok(e);
       assert.strictEqual(e.message, 'error2');
     }
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       'test3',
       'test2'
     ]);
@@ -63,7 +63,7 @@ parallel('props', () => {
       task3: 3
     };
     const res = await Promise.props(tasks);
-    assert.deepEqual(res, {
+    assert.deepStrictEqual(res, {
       task1: 1,
       task2: 2,
       task3: 3
@@ -74,7 +74,7 @@ parallel('props', () => {
 
     const res = await Promise.props({});
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {});
+    assert.deepStrictEqual(res, {});
   });
 
   it('should throw an error', async () => {
@@ -105,12 +105,12 @@ parallel('#props', () => {
       task3: delay('test3', DELAY * 1)
     };
     const res = await Promise.resolve(tasks).props();
-    assert.deepEqual(res, {
+    assert.deepStrictEqual(res, {
       task1: 'test1',
       task2: 'test2',
       task3: 'test3'
     });
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       'test3',
       'test2',
       'test1'
@@ -132,7 +132,7 @@ parallel('#props', () => {
     } catch (e) {
       assert.ok(e);
       assert.strictEqual(e.message, 'error2');
-      assert.deepEqual(order, [
+      assert.deepStrictEqual(order, [
         'test3',
         'test2'
       ]);

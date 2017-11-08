@@ -23,8 +23,8 @@ parallel('concat', () => {
     };
     const res = await Promise.concat(collection, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
-    assert.deepEqual(res, [1, 4, 2]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [1, 4, 2]);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2],
       [1, 4]
@@ -48,8 +48,8 @@ parallel('concat', () => {
     };
     const res = await Promise.concat(collection, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
-    assert.deepEqual(res, [1, 4, 2]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [1, 4, 2]);
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 2],
       ['task2', 4]
@@ -61,7 +61,7 @@ parallel('concat', () => {
     const collection = [null, undefined, 0, '', false];
     const iterator = value => value;
     const res = await Promise.concat(collection, iterator);
-    assert.deepEqual(res, [null, 0, '', false]);
+    assert.deepStrictEqual(res, [null, 0, '', false]);
   });
 
   it('should return an empty array if collection is an empty array', async () => {
@@ -122,8 +122,8 @@ parallel('#concat', () => {
       }, DELAY * value));
     };
     const res = await Promise.resolve(collection).concat(iterator);
-    assert.deepEqual(res, [1, 4, 2]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [1, 4, 2]);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2],
       [1, 4]
@@ -144,8 +144,8 @@ parallel('#concat', () => {
       }, DELAY * value));
     };
     const res = await Promise.resolve(collection).concat(iterator);
-    assert.deepEqual(res, [1, 4, 2]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [1, 4, 2]);
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 2],
       ['task2', 4]

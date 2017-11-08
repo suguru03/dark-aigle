@@ -26,8 +26,8 @@ parallel('times', () => {
     const res = await Promise.times(count, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
     assert.strictEqual(res.length, count);
-    assert.deepEqual(res, [0, 2, 4, 6, 8]);
-    assert.deepEqual(order, [0, 2, 4, 1, 3]);
+    assert.deepStrictEqual(res, [0, 2, 4, 6, 8]);
+    assert.deepStrictEqual(order, [0, 2, 4, 1, 3]);
   });
 
   it('should execute with synchronous function', async () => {
@@ -37,7 +37,7 @@ parallel('times', () => {
     const res = await Promise.times(count, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
     assert.strictEqual(res.length, count);
-    assert.deepEqual(res, [0, 2, 4, 6, 8]);
+    assert.deepStrictEqual(res, [0, 2, 4, 6, 8]);
   });
 
   it('should return an empty array if times is not number', async () => {
@@ -53,7 +53,7 @@ parallel('times', () => {
     const res = await Promise.times(5);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
     assert.strictEqual(res.length, 5);
-    assert.deepEqual(res, [0, 1, 2, 3, 4]);
+    assert.deepStrictEqual(res, [0, 1, 2, 3, 4]);
   });
 
   it('should execute with decimal number', async () => {
@@ -61,7 +61,7 @@ parallel('times', () => {
     const res = await Promise.times(5.5);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
     assert.strictEqual(res.length, 5);
-    assert.deepEqual(res, [0, 1, 2, 3, 4]);
+    assert.deepStrictEqual(res, [0, 1, 2, 3, 4]);
   });
 
   it('should catch a TypeError', async () => {
@@ -94,8 +94,8 @@ parallel('#times', () => {
     const res = await Promise.resolve(count).times(iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
     assert.strictEqual(res.length, count);
-    assert.deepEqual(res, [0, 2, 4, 6, 8]);
-    assert.deepEqual(order, [0, 2, 4, 1, 3]);
+    assert.deepStrictEqual(res, [0, 2, 4, 6, 8]);
+    assert.deepStrictEqual(order, [0, 2, 4, 1, 3]);
   });
 
   it('should execute with delay', async () => {
@@ -105,6 +105,6 @@ parallel('#times', () => {
     const res = await Promise.delay(DELAY, count).times(iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
     assert.strictEqual(res.length, count);
-    assert.deepEqual(res, [0, 2, 4, 6, 8]);
+    assert.deepStrictEqual(res, [0, 2, 4, 6, 8]);
   });
 });

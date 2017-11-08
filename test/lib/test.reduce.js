@@ -23,7 +23,7 @@ parallel('reduce', () => {
     };
     const res = await Promise.reduce(collection, iterator, result);
     assert.strictEqual(res, 'result142');
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [1, 4],
       [2, 2]
@@ -56,7 +56,7 @@ parallel('reduce', () => {
     };
     const res = await Promise.reduce(collection, iterator, result);
     assert.strictEqual(res, 'result142');
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task2', 4],
       ['task3', 2]
@@ -75,7 +75,7 @@ parallel('reduce', () => {
     };
     const res = await Promise.reduce(collection, iterator);
     assert.strictEqual(res, 7);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [1, 4],
       [2, 2]
     ]);
@@ -97,7 +97,7 @@ parallel('reduce', () => {
     };
     const res = await Promise.reduce(collection, iterator);
     assert.strictEqual(res, 7);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task2', 4],
       ['task3', 2]
     ]);
@@ -171,7 +171,7 @@ parallel('#reduce', () => {
     };
     const res = await Promise.resolve(collection).reduce(iterator, result);
     assert.strictEqual(res, 'result142');
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [1, 4],
       [2, 2]
@@ -195,7 +195,7 @@ parallel('#reduce', () => {
     };
     const res = await Promise.resolve(collection).reduce(iterator, result);
     assert.strictEqual(res, 'result142');
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task2', 4],
       ['task3', 2]
@@ -215,7 +215,7 @@ parallel('#reduce', () => {
     };
     const res = await Promise.delay(DELAY, collection).reduce(iterator, result);
     assert.strictEqual(res, 'result142');
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [1, 4],
       [2, 2]

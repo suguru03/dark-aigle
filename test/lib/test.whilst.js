@@ -22,8 +22,8 @@ parallel('whilst', () => {
       return new Promise(resolve => setImmediate(resolve, count));
     };
     const res = await Promise.whilst(test, iterator);
-    assert.deepEqual(order.iterator, [0, 1, 2, 3, 4]);
-    assert.deepEqual(order.test, [0, 1, 2, 3, 4, 5]);
+    assert.deepStrictEqual(order.iterator, [0, 1, 2, 3, 4]);
+    assert.deepStrictEqual(order.test, [0, 1, 2, 3, 4, 5]);
     assert.strictEqual(res, 5);
   });
 
@@ -41,8 +41,8 @@ parallel('whilst', () => {
       return new Promise(resolve => setImmediate(resolve, value));
     };
     const res = await Promise.whilst(value, test, iterator);
-    assert.deepEqual(order.iterator, [1, 2, 3, 4]);
-    assert.deepEqual(order.test, [1, 2, 3, 4, 5]);
+    assert.deepStrictEqual(order.iterator, [1, 2, 3, 4]);
+    assert.deepStrictEqual(order.test, [1, 2, 3, 4, 5]);
     assert.strictEqual(res, 5);
   });
 
@@ -60,8 +60,8 @@ parallel('whilst', () => {
       return new Promise(resolve => setImmediate(resolve, count));
     };
     const res = await Promise.whilst(test, iterator);
-    assert.deepEqual(order.iterator, [0, 1, 2, 3, 4]);
-    assert.deepEqual(order.test, [0, 1, 2, 3, 4, 5]);
+    assert.deepStrictEqual(order.iterator, [0, 1, 2, 3, 4]);
+    assert.deepStrictEqual(order.test, [0, 1, 2, 3, 4, 5]);
     assert.strictEqual(res, 5);
   });
 
@@ -106,8 +106,8 @@ parallel('#whilst', () => {
       return new Promise(resolve => setImmediate(resolve, value));
     };
     const res = await Promise.resolve(value).whilst(test, iterator);
-    assert.deepEqual(order.iterator, [1, 2, 3, 4]);
-    assert.deepEqual(order.test, [1, 2, 3, 4, 5]);
+    assert.deepStrictEqual(order.iterator, [1, 2, 3, 4]);
+    assert.deepStrictEqual(order.test, [1, 2, 3, 4, 5]);
     assert.strictEqual(res, 5);
   });
 });

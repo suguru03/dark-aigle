@@ -22,11 +22,11 @@ parallel('groupBy', () => {
     };
     const res = await Promise.groupBy(collection, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {
+    assert.deepStrictEqual(res, {
       '0': [2, 4],
       '1': [1]
     });
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2],
       [1, 4]
@@ -49,11 +49,11 @@ parallel('groupBy', () => {
     };
     const res = await Promise.groupBy(collection, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {
+    assert.deepStrictEqual(res, {
       '0': [2, 4],
       '1': [1]
     });
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 2],
       ['task2', 4]
@@ -67,7 +67,7 @@ parallel('groupBy', () => {
     };
     const res = await Promise.groupBy([], iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {});
+    assert.deepStrictEqual(res, {});
   });
 
   it('should return an empty ojbect if collection is an empty object', async () => {
@@ -77,7 +77,7 @@ parallel('groupBy', () => {
     };
     const res = await Promise.groupBy({}, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {});
+    assert.deepStrictEqual(res, {});
   });
 
   it('should return an empty object if collection is string', async () => {
@@ -87,7 +87,7 @@ parallel('groupBy', () => {
     };
     const res = await Promise.groupBy('test', iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {});
+    assert.deepStrictEqual(res, {});
   });
 
   it('should throw TypeError', async () => {
@@ -118,11 +118,11 @@ parallel('#groupBy', () => {
       }, DELAY * value));
     };
     const res = await Promise.resolve(collection).groupBy(iterator);
-    assert.deepEqual(res, {
+    assert.deepStrictEqual(res, {
       '0': [2, 4],
       '1': [1]
     });
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2],
       [1, 4]
@@ -143,11 +143,11 @@ parallel('#groupBy', () => {
       }, DELAY * value));
     };
     const res = await Promise.resolve(collection).groupBy(iterator);
-    assert.deepEqual(res, {
+    assert.deepStrictEqual(res, {
       '0': [2, 4],
       '1': [1]
     });
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 2],
       ['task2', 4]
@@ -165,11 +165,11 @@ parallel('#groupBy', () => {
       }, DELAY * value));
     };
     const res = await Promise.delay(DELAY, collection).groupBy(iterator);
-    assert.deepEqual(res, {
+    assert.deepStrictEqual(res, {
       '0': [2, 4],
       '1': [1]
     });
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2],
       [1, 4]

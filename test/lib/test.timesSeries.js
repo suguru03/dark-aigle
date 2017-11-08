@@ -24,8 +24,8 @@ parallel('timesSeries', () => {
     const res = await Promise.timesSeries(count, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
     assert.strictEqual(res.length, count);
-    assert.deepEqual(res, [0, 2, 4, 6, 8]);
-    assert.deepEqual(order, [0, 1, 2, 3, 4]);
+    assert.deepStrictEqual(res, [0, 2, 4, 6, 8]);
+    assert.deepStrictEqual(order, [0, 1, 2, 3, 4]);
   });
 
   it('should execute with synchronous function', async () => {
@@ -35,7 +35,7 @@ parallel('timesSeries', () => {
     const res = await Promise.timesSeries(count, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
     assert.strictEqual(res.length, count);
-    assert.deepEqual(res, [0, 2, 4, 6, 8]);
+    assert.deepStrictEqual(res, [0, 2, 4, 6, 8]);
   });
 
   it('should return an empty array if times is not number', async () => {
@@ -51,7 +51,7 @@ parallel('timesSeries', () => {
     const res = await Promise.timesSeries(5);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
     assert.strictEqual(res.length, 5);
-    assert.deepEqual(res, [0, 1, 2, 3, 4]);
+    assert.deepStrictEqual(res, [0, 1, 2, 3, 4]);
   });
 
   it('should catch a TypeError', async () => {
@@ -83,8 +83,8 @@ parallel('#timesSeries', () => {
     const res = await Promise.resolve(count).timesSeries(iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
     assert.strictEqual(res.length, count);
-    assert.deepEqual(res, [0, 2, 4, 6, 8]);
-    assert.deepEqual(order, [0, 1, 2, 3, 4]);
+    assert.deepStrictEqual(res, [0, 2, 4, 6, 8]);
+    assert.deepStrictEqual(order, [0, 1, 2, 3, 4]);
   });
 
   it('should execute with delay', async () => {
@@ -94,6 +94,6 @@ parallel('#timesSeries', () => {
     const res = await Promise.delay(DELAY, count).timesSeries(iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
     assert.strictEqual(res.length, count);
-    assert.deepEqual(res, [0, 2, 4, 6, 8]);
+    assert.deepStrictEqual(res, [0, 2, 4, 6, 8]);
   });
 });

@@ -22,10 +22,10 @@ parallel('pick', () => {
     };
     const res = await Promise.pick(collection, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {
+    assert.deepStrictEqual(res, {
       '0': 1
     });
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2],
       [1, 4]
@@ -48,10 +48,10 @@ parallel('pick', () => {
     };
     const res = await Promise.pick(collection, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {
+    assert.deepStrictEqual(res, {
       'task1': 1
     });
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 2],
       ['task2', 4]
@@ -65,7 +65,7 @@ parallel('pick', () => {
     };
     const res = await Promise.pick([], iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {});
+    assert.deepStrictEqual(res, {});
   });
 
   it('should return an empty array if collection is an empty object', async () => {
@@ -75,7 +75,7 @@ parallel('pick', () => {
     };
     const res = await Promise.pick({}, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {});
+    assert.deepStrictEqual(res, {});
   });
 
   it('should return an empty array if collection is string', async () => {
@@ -85,7 +85,7 @@ parallel('pick', () => {
     };
     const res = await Promise.pick('test', iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {});
+    assert.deepStrictEqual(res, {});
   });
 
   it('should throw TypeError', async () => {
@@ -117,10 +117,10 @@ parallel('#pick', () => {
     };
     const res = await Promise.resolve(collection).pick(iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {
+    assert.deepStrictEqual(res, {
       '0': 1
     });
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2],
       [1, 4]
@@ -142,10 +142,10 @@ parallel('#pick', () => {
     };
     const res = await Promise.resolve(collection).pick(iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {
+    assert.deepStrictEqual(res, {
       'task1': 1
     });
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 2],
       ['task2', 4]
@@ -164,10 +164,10 @@ parallel('#pick', () => {
     };
     const res = await Promise.delay(DELAY, collection).pick(iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {
+    assert.deepStrictEqual(res, {
       '0': 1
     });
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2],
       [1, 4]

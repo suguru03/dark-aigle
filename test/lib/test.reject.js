@@ -22,8 +22,8 @@ parallel('reject', () => {
     };
     const res = await Promise.reject(collection, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
-    assert.deepEqual(res, [4, 2]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [4, 2]);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2],
       [1, 4]
@@ -46,8 +46,8 @@ parallel('reject', () => {
     };
     const res = await Promise.reject(collection, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
-    assert.deepEqual(res, [4, 2]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [4, 2]);
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 2],
       ['task2', 4]
@@ -112,8 +112,8 @@ parallel('#reject', () => {
       }, DELAY * value));
     };
     const res = await Promise.resolve(collection).reject(iterator);
-    assert.deepEqual(res, [4, 2]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [4, 2]);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2],
       [1, 4]
@@ -134,8 +134,8 @@ parallel('#reject', () => {
       }, DELAY * value));
     };
     const res = await Promise.resolve(collection).reject(iterator);
-    assert.deepEqual(res, [4, 2]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [4, 2]);
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 2],
       ['task2', 4]
@@ -153,8 +153,8 @@ parallel('#reject', () => {
       }, DELAY * value));
     };
     const res = await Promise.delay(DELAY, collection).reject(iterator);
-    assert.deepEqual(res, [4, 2]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [4, 2]);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 2],
       [1, 4]

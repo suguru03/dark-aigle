@@ -24,8 +24,8 @@ parallel('transformLimit', () => {
     };
     const res = await Promise.transformLimit(collection, 2, iterator, []);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
-    assert.deepEqual(res, [1, 3, 5, 2, 4]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [1, 3, 5, 2, 4]);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 3],
       [1, 5],
@@ -53,8 +53,8 @@ parallel('transformLimit', () => {
     };
     const res = await Promise.transformLimit(collection, 2, iterator, []);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
-    assert.deepEqual(res, [1, 3, 5, 2, 4]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [1, 3, 5, 2, 4]);
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 3],
       ['task2', 5],
@@ -73,7 +73,7 @@ parallel('transformLimit', () => {
     };
     Promise.transformLimit(collection, iterator);
     await Promise.delay(DELAY);
-    assert.deepEqual(order, _.times(8));
+    assert.deepStrictEqual(order, _.times(8));
   });
 
   it('should break if value is false', async () => {
@@ -89,8 +89,8 @@ parallel('transformLimit', () => {
     };
     const res = await Promise.transformLimit(collection, 2, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
-    assert.deepEqual(res, [1, 3, 5]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [1, 3, 5]);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 3],
       [1, 5]
@@ -116,12 +116,12 @@ parallel('transformLimit', () => {
     };
     const res = await Promise.transformLimit(collection, 2, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {
+    assert.deepStrictEqual(res, {
       task1: 1,
       task2: 5,
       task3: 3
     });
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 3],
       ['task2', 5]
@@ -141,8 +141,8 @@ parallel('transformLimit', () => {
     };
     const res = await Promise.transformLimit(collection, iterator, []);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
-    assert.deepEqual(res, [1, 2, 3, 4, 5]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [1, 2, 3, 4, 5]);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [4, 2],
       [2, 3],
@@ -164,8 +164,8 @@ parallel('transformLimit', () => {
     };
     const res = await Promise.transformLimit(collection, iterator, []);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
-    assert.deepEqual(res, [1, 2, 3, 4, 5]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [1, 2, 3, 4, 5]);
+    assert.deepStrictEqual(order, [
       ['a', 1],
       ['e', 2],
       ['c', 3],
@@ -191,7 +191,7 @@ parallel('transformLimit', () => {
     };
     const res = await Promise.transformLimit({}, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {});
+    assert.deepStrictEqual(res, {});
   });
 
   it('should return an empty object if collection is string', async () => {
@@ -201,7 +201,7 @@ parallel('transformLimit', () => {
     };
     const res = await Promise.transformLimit('test', iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {});
+    assert.deepStrictEqual(res, {});
   });
 
   it('should stop execution if error is caused', async () => {
@@ -222,7 +222,7 @@ parallel('transformLimit', () => {
       assert.strictEqual(e, error);
     }
     await Promise.delay(DELAY * 5);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 3],
       [1, 5]
@@ -253,7 +253,7 @@ parallel('transformLimit', () => {
       assert.strictEqual(e, error);
     }
     await Promise.delay(DELAY * 5);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 3],
       ['task2', 5]
@@ -276,8 +276,8 @@ parallel('#transformLimit', () => {
     };
     const res = await Promise.resolve(collection).transformLimit(2, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
-    assert.deepEqual(res, [1, 3, 5, 2, 4]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [1, 3, 5, 2, 4]);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 3],
       [1, 5],
@@ -304,14 +304,14 @@ parallel('#transformLimit', () => {
     };
     const res = await Promise.resolve(collection).transformLimit(2, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {
+    assert.deepStrictEqual(res, {
       task1: 1,
       task2: 5,
       task3: 3,
       task4: 4,
       task5: 2
     });
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 3],
       ['task2', 5],
@@ -333,8 +333,8 @@ parallel('#transformLimit', () => {
     };
     const res = await Promise.delay(DELAY, collection).transformLimit(2, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
-    assert.deepEqual(res, [1, 3, 5, 2, 4]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [1, 3, 5, 2, 4]);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 3],
       [1, 5],
@@ -352,6 +352,6 @@ parallel('#transformLimit', () => {
     };
     Promise.resolve(collection).transformLimit(iterator);
     await Promise.delay(DELAY * 5);
-    assert.deepEqual(order, _.times(8));
+    assert.deepStrictEqual(order, _.times(8));
   });
 });

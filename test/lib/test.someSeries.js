@@ -22,7 +22,7 @@ parallel('someSeries', () => {
     };
     const res = await Promise.someSeries(collection, iterator);
     assert.strictEqual(res, true);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1]
     ]);
   });
@@ -51,7 +51,7 @@ parallel('someSeries', () => {
     };
     const res = await Promise.someSeries(collection, iterator);
     assert.strictEqual(res, true);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1]
     ]);
   });
@@ -68,7 +68,7 @@ parallel('someSeries', () => {
     };
     const res = await Promise.someSeries(collection, iterator);
     assert.strictEqual(res, false);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 0],
       [1, 4],
       [2, 2]
@@ -91,7 +91,7 @@ parallel('someSeries', () => {
     };
     const res = await Promise.someSeries(collection, iterator);
     assert.strictEqual(res, false);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 0],
       ['task2', 4],
       ['task3', 2]
@@ -153,7 +153,7 @@ parallel('#someSeries', () => {
     };
     const res = await Promise.resolve(collection).someSeries(iterator);
     assert.strictEqual(res, true);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1]
     ]);
   });
@@ -173,7 +173,7 @@ parallel('#someSeries', () => {
     };
     const res = await Promise.resolve(collection).someSeries(iterator);
     assert.strictEqual(res, true);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1]
     ]);
   });
@@ -190,7 +190,7 @@ parallel('#someSeries', () => {
     };
     const res = await Promise.delay(DELAY, collection).someSeries(iterator);
     assert.strictEqual(res, true);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1]
     ]);
   });

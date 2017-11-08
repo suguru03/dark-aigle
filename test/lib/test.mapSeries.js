@@ -22,8 +22,8 @@ parallel('mapSeries', () => {
     };
     const res = await Promise.mapSeries(collection, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
-    assert.deepEqual(res, [2, 8, 4]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [2, 8, 4]);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [1, 4],
       [2, 2]
@@ -36,7 +36,7 @@ parallel('mapSeries', () => {
     const iterator = value => value * 2;
     const res = await Promise.mapSeries(collection, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
-    assert.deepEqual(res, [2, 8, 4]);
+    assert.deepStrictEqual(res, [2, 8, 4]);
   });
 
   it('should execute with object collection in series', async () => {
@@ -55,8 +55,8 @@ parallel('mapSeries', () => {
     };
     const res = await Promise.mapSeries(collection, iterator);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
-    assert.deepEqual(res, [2, 8, 4]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [2, 8, 4]);
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task2', 4],
       ['task3', 2]
@@ -126,8 +126,8 @@ parallel('#mapSeries', () => {
       }, DELAY * value));
     };
     const res = await Promise.resolve(collection).mapSeries(iterator);
-    assert.deepEqual(res, [2, 8, 4]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [2, 8, 4]);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [1, 4],
       [2, 2]
@@ -148,8 +148,8 @@ parallel('#mapSeries', () => {
       }, DELAY * value));
     };
     const res = await Promise.resolve(collection).mapSeries(iterator);
-    assert.deepEqual(res, [2, 8, 4]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [2, 8, 4]);
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task2', 4],
       ['task3', 2]
@@ -167,8 +167,8 @@ parallel('#mapSeries', () => {
       }, DELAY * value));
     };
     const res = await Promise.delay(DELAY, collection).mapSeries(iterator);
-    assert.deepEqual(res, [2, 8, 4]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, [2, 8, 4]);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [1, 4],
       [2, 2]

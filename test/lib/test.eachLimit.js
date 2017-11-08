@@ -23,8 +23,8 @@ parallel('eachLimit', () => {
       }, DELAY * value));
     };
     const res = await Promise.eachLimit(collection, 2, iterator);
-    assert.deepEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, undefined);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 3],
       [1, 5],
@@ -50,8 +50,8 @@ parallel('eachLimit', () => {
       }, DELAY * value));
     };
     const res = await Promise.eachLimit(collection, 2, iterator);
-    assert.deepEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, undefined);
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 3],
       ['task2', 5],
@@ -70,7 +70,7 @@ parallel('eachLimit', () => {
     };
     Promise.eachLimit(collection, iterator);
     await new Promise(resolve => setTimeout(resolve, DELAY));
-    assert.deepEqual(order, _.times(8));
+    assert.deepStrictEqual(order, _.times(8));
   });
 
   it('should break if value is false', async () => {
@@ -85,8 +85,8 @@ parallel('eachLimit', () => {
     };
     const res = await Promise.eachLimit(collection, 2, iterator);
     await Promise.delay(DELAY);
-    assert.deepEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, undefined);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 3],
       [1, 5]
@@ -110,8 +110,8 @@ parallel('eachLimit', () => {
     };
     const res = await Promise.eachLimit(collection, 2, iterator);
     await Promise.delay(DELAY);
-    assert.deepEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, undefined);
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 3],
       ['task2', 5]
@@ -135,7 +135,7 @@ parallel('eachLimit', () => {
       assert.strictEqual(e, 'error');
     }
     await Promise.delay(DELAY);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 3],
       [1, 5]
@@ -162,10 +162,10 @@ parallel('eachLimit', () => {
       await Promise.eachLimit(collection, 2, iterator);
       assert.fail();
     } catch (e) {
-      assert.deepEqual(e, 'error');
+      assert.deepStrictEqual(e, 'error');
     }
     await Promise.delay(DELAY);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 3],
       ['task2', 5]
@@ -207,8 +207,8 @@ parallel('forEachLimit', () => {
       }, DELAY * value));
     };
     const res = await Promise.forEachLimit(collection, 2, iterator);
-    assert.deepEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, undefined);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 3],
       [1, 5],
@@ -232,8 +232,8 @@ parallel('#eachLimit', () => {
       }, DELAY * value));
     };
     const res = await Promise.resolve(collection).eachLimit(2, iterator);
-    assert.deepEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, undefined);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 3],
       [1, 5],
@@ -248,8 +248,8 @@ parallel('#eachLimit', () => {
     const collection = [1, 5, 3, 4, 2];
     const iterator = (value, key) => order.push([key, value]);
     const res = await Promise.resolve(collection).eachLimit(2, iterator);
-    assert.deepEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, undefined);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [1, 5],
       [2, 3],
@@ -275,8 +275,8 @@ parallel('#eachLimit', () => {
       }, DELAY * value));
     };
     const res = await Promise.resolve(collection).eachLimit(2, iterator);
-    assert.deepEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, undefined);
+    assert.deepStrictEqual(order, [
       ['task1', 1],
       ['task3', 3],
       ['task2', 5],
@@ -329,8 +329,8 @@ parallel('#forEachLimit', () => {
       }, DELAY * value));
     };
     const res = await Promise.resolve(collection).forEachLimit(2, iterator);
-    assert.deepEqual(res, undefined);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(res, undefined);
+    assert.deepStrictEqual(order, [
       [0, 1],
       [2, 3],
       [1, 5],

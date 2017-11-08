@@ -21,12 +21,12 @@ parallel('parallel', () => {
       delay('test3', DELAY * 1)
     ];
     const res = await Promise.parallel(tasks);
-    assert.deepEqual(res, [
+    assert.deepStrictEqual(res, [
       'test1',
       'test2',
       'test3'
     ]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       'test3',
       'test2',
       'test1'
@@ -43,12 +43,12 @@ parallel('parallel', () => {
       task3: delay('test3', DELAY * 1)
     };
     const res = await Promise.parallel(tasks);
-    assert.deepEqual(res, {
+    assert.deepStrictEqual(res, {
       task1: 'test1',
       task2: 'test2',
       task3: 'test3'
     });
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       'test3',
       'test2',
       'test1'
@@ -59,21 +59,21 @@ parallel('parallel', () => {
 
     const res = await Promise.parallel([]);
     assert.strictEqual(Object.prototype.toString.call(res), '[object Array]');
-    assert.deepEqual(res, []);
+    assert.deepStrictEqual(res, []);
   });
 
   it('should return an empty object immediately', async () => {
 
     const res = await Promise.parallel({});
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {});
+    assert.deepStrictEqual(res, {});
   });
 
   it('should return an empty object immediately', async () => {
 
     const res = await Promise.parallel();
     assert.strictEqual(Object.prototype.toString.call(res), '[object Object]');
-    assert.deepEqual(res, {});
+    assert.deepStrictEqual(res, {});
   });
 });
 
@@ -90,12 +90,12 @@ parallel('#parallel', () => {
       delay('test3', DELAY * 1)
     ];
     const res = await Promise.resolve(tasks).parallel();
-    assert.deepEqual(res, [
+    assert.deepStrictEqual(res, [
       'test1',
       'test2',
       'test3'
     ]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       'test3',
       'test2',
       'test1'
@@ -112,12 +112,12 @@ parallel('#parallel', () => {
       task3: delay('test3', DELAY * 1)
     };
     const res = await Promise.resolve(tasks).parallel();
-    assert.deepEqual(res, {
+    assert.deepStrictEqual(res, {
       task1: 'test1',
       task2: 'test2',
       task3: 'test3'
     });
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       'test3',
       'test2',
       'test1'
@@ -134,12 +134,12 @@ parallel('#parallel', () => {
       delay('test3', DELAY * 1)
     ];
     const res = await Promise.delay(DELAY, tasks).parallel();
-    assert.deepEqual(res, [
+    assert.deepStrictEqual(res, [
       'test1',
       'test2',
       'test3'
     ]);
-    assert.deepEqual(order, [
+    assert.deepStrictEqual(order, [
       'test3',
       'test2',
       'test1'
