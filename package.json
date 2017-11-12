@@ -5,6 +5,7 @@
   "private": true,
   "main": "lib/aiglify.js",
   "scripts": {
+    "eslint": "eslint . --ext .js",
     "test": "mocha test --recursive"
   },
   "keywords": [
