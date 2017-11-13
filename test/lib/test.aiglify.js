@@ -29,20 +29,24 @@ parallel('aiglify', () => {
   it.skip('should have aigle functions', () => {
 
     const errors = [];
-    Object.getOwnPropertyNames(Aigle)
-      .sort()
-      .forEach(key => {
-        try {
-          assert.ok(Promise[key]);
-        } catch (e) {
-          errors.push(key);
+    const createChecker = proto => {
+      return key => {
+        if (/^_/.test(key)) {
+          return;
         }
-      });
+        try {
+          assert.ok(proto ? Promise.prototype[key] : Promise[key]);
+        } catch (e) {
+          errors.push(proto ? `prototype.${key}` : key);
+        }
+      };
+    };
+    Object.getOwnPropertyNames(Aigle).forEach(createChecker(false));
+    Object.getOwnPropertyNames(Aigle.prototype).forEach(createChecker(true));
     if (!errors.length) {
       return;
     }
     errors.unshift('');
     assert.fail(errors.join('\n\t'));
   });
-
 });
