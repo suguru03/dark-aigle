@@ -1,6 +1,6 @@
 {
   "name": "dark-aigle",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Dark Aigle extends a native Promise or a promise library to have useful functions using dark power",
   "main": "lib/aiglify.js",
   "scripts": {
