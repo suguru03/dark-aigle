@@ -22,8 +22,9 @@ parallel('aiglify', () => {
       catch() {
       }
     }
-    aiglify(P);
+    const P2 = aiglify(P);
     assert.strictEqual(typeof P.delay, 'function');
+    assert.strictEqual(P2, P);
   });
 
   it.skip('should have aigle functions', () => {

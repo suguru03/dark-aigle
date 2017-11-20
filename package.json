@@ -5,7 +5,7 @@
   "main": "lib/aiglify.js",
   "scripts": {
     "eslint": "eslint . --ext .js",
-    "test": "mocha test --recursive"
+    "test": "DELAY=50 mocha test --recursive"
   },
   "keywords": [
     "aigle",
