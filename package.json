@@ -1,8 +1,7 @@
 {
   "name": "dark-aigle",
   "version": "0.0.0",
-  "description": "",
-  "private": true,
+  "description": "Dark Aigle extends a native Promise or a promise library to have useful functions using dark power",
   "main": "lib/aiglify.js",
   "scripts": {
     "eslint": "eslint . --ext .js",
@@ -12,6 +11,11 @@
     "aigle",
     "promise",
     "async"
+  ],
+  "files": [
+    "README.md",
+    "LICENSE",
+    "lib/"
   ],
   "author": "Suguru Motegi",
   "license": "MIT",
