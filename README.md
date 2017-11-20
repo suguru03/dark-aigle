@@ -18,6 +18,8 @@ require('dark-aigle')(Promise);
 
 ## Example
 
+### Async/Await
+
 ```js
 async function executeAsyncTask() {
   await new Promise(resolve => setTimeout(resolve));
@@ -63,5 +65,22 @@ async function test() {
     .filter(filterIterator)
     .map(mapIterator);
   console.log(result); // [2, 6]
+}
+```
+
+### Bluebird
+
+```
+const Bluebird = require('bluebird');
+require('dark-aigle')(Bluebird);
+
+test();
+
+async function test() {
+  const val = await Bluebird.resolve([1, 2, 3])
+    .filter(n => n % 2)
+    .reduce((sum, n) => sum + n)
+    .times();
+  console.log(val); // [0, 1, 2, 3];
 }
 ```
