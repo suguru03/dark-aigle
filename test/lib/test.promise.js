@@ -6,6 +6,14 @@ const assert = require('assert');
 
 const parallel = require('mocha.parallel');
 
+parallel('VERSION', () => {
+
+  it('should get the latest version', () => {
+    const { version } = require('../../package');
+    assert.strictEqual(Promise.VERSION, version);
+  });
+});
+
 parallel('#finally', () => {
 
   it('should work', async () => {
