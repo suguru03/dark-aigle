@@ -2,6 +2,8 @@
   <img alt="aigle" src="https://raw.githubusercontent.com/suguru03/dark-aigle/gh-pages/images/logo.png" width=500>
 </p>
 
+⚠　WIP ⚠
+
 Dark Aigle has dark power.
 
 The library extends native Promises or a Promise library to have [Aigle functions](https://github.com/suguru03/aigle#functions).
